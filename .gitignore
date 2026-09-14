@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+tmp/
+.playwright-mcp/
+*.log
+Thumbs.db
+desktop.ini
+.DS_Store

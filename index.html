@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ru" class="is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Инна Сибиль — ведущая мероприятий в Москве</title>
+<meta name="description" content="Инна Сибиль — ведущая свадеб, юбилеев, дней рождения и корпоративов в Москве. 10 лет практики, авторский сценарий под ваших гостей, вечер без шаблонных конкурсов.">
+<meta name="theme-color" content="#08080a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Инна Сибиль — ведущая мероприятий в Москве">
+<meta property="og:description" content="Праздник, который не хочется заканчивать. 10 лет на сцене, авторский сценарий под ваших гостей.">
+<meta property="og:image" content="img/inna-03.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308080a'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23c9db4a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;800&family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">К основному содержанию</a>
+
+<!-- Фон: шейдерная дымка, под ней градиентный запасной вариант -->
+<div class="bg-fallback" aria-hidden="true"></div>
+<canvas id="gl-bg" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Прелоадер -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__word"><b id="pre-word">Собираем зал</b></div>
+  <div class="preloader__row">
+    <div class="preloader__name">Инна<br>Сибиль</div>
+    <div class="preloader__count"><span id="pre-count">0</span></div>
+  </div>
+  <div class="preloader__bar"><span id="pre-bar"></span></div>
+</div>
+
+<!-- Курсор -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor__ring" id="cursor-ring"></div>
+  <div class="cursor__dot"></div>
+</div>
+
+<!-- Навигация -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" data-cursor="hover">
+    <i class="nav__dot"></i> Инна&nbsp;Сибиль
+  </a>
+  <nav class="nav__links" aria-label="Основная навигация">
+    <a class="nav__link" href="#about" data-cursor="hover">О себе</a>
+    <a class="nav__link" href="#formats" data-cursor="hover">Форматы</a>
+    <a class="nav__link" href="#process" data-cursor="hover">Как работаем</a>
+    <a class="nav__link" href="#reviews" data-cursor="hover">Отзывы</a>
+    <a class="nav__link" href="#faq" data-cursor="hover">Вопросы</a>
+  </nav>
+  <a class="btn btn--sm nav__cta" href="#contact" data-magnetic data-cursor="hover">
+    Проверить дату <i class="btn__arrow"></i>
+  </a>
+  <button class="nav__burger" id="burger" aria-label="Меню" aria-expanded="false"><i></i></button>
+</header>
+
+<!-- Полноэкранное меню -->
+<div class="menu" id="menu">
+  <ul class="menu__list">
+    <li><a class="menu__item" href="#about" data-cursor="hover"><small>01</small> О себе</a></li>
+    <li><a class="menu__item" href="#formats" data-cursor="hover"><small>02</small> Форматы</a></li>
+    <li><a class="menu__item" href="#process" data-cursor="hover"><small>03</small> Как работаем</a></li>
+    <li><a class="menu__item" href="#reviews" data-cursor="hover"><small>04</small> Отзывы</a></li>
+    <li><a class="menu__item" href="#faq" data-cursor="hover"><small>05</small> Вопросы</a></li>
+    <li><a class="menu__item" href="#contact" data-cursor="hover"><small>06</small> Забронировать</a></li>
+  </ul>
+  <div class="menu__foot">
+    <a href="https://t.me/innasofijasibil" target="_blank" rel="noopener">Telegram-канал</a>
+    <a href="tel:+70000000000" class="ph">+7 000 000-00-00</a>
+    <span>Москва и область</span>
+  </div>
+</div>
+
+<main id="main" class="scroll-track">
+<span id="top"></span>
+
+<!-- ============================ Первый экран ==================== -->
+<section class="hero" id="hero">
+  <div class="hero__portrait" id="hero-portrait">
+    <canvas id="gl-portrait" aria-hidden="true"></canvas>
+    <img src="img/inna-03.jpg" alt="Инна Сибиль, ведущая мероприятий">
+  </div>
+
+  <div class="shell hero__inner">
+    <div class="hero__kicker" data-reveal>
+      <span class="hero__tag">Ведущая мероприятий · Москва</span>
+      <span class="hero__tag">10 лет на сцене</span>
+      <span class="hero__tag">Одно событие в день</span>
+    </div>
+
+    <h1 class="hero__title">
+      <span class="display display--xl" data-split>Праздник,</span>
+      <span class="hero__line-2">
+        <span class="display display--xl" data-split>который</span>
+        <span class="display display--xl serif acid" data-split>не хочется</span>
+      </span>
+      <span class="display display--xl" data-split>заканчивать</span>
+    </h1>
+
+    <div class="hero__meta">
+      <p class="lead" data-reveal data-delay="2">
+        Меня зовут Инна Сибиль. Десять лет я веду свадьбы, юбилеи и корпоративы в Москве —
+        без шаблонных конкурсов, без пошлых шуток и без ощущения, что вечером
+        руководите вы, а не ведущая.
+      </p>
+      <div data-reveal data-delay="3">
+        <a class="btn btn--solid btn--lg" href="#contact" data-magnetic data-cursor="hover">
+          Забронировать дату <i class="btn__arrow"></i>
+        </a>
+      </div>
+      <div class="hero__scroll" data-reveal data-delay="4">
+        <span>Ближайшие свободные даты — <span class="ph">уточнить</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Бегущая строка ================== -->
+<div class="marquee" data-marquee data-speed="0.9" aria-hidden="true">
+  <div class="marquee__row">
+    <div class="marquee__item">Юбилеи <span>◆</span> Свадьбы <span>◆</span> <b class="is-ghost">Корпоративы</b> <span>◆</span> Дни рождения <span>◆</span> Семейные торжества <span>◆</span> <b class="is-ghost">Новый год</b> <span>◆</span> Выпускные <span>◆</span> Открытия <span>◆</span></div>
+  </div>
+</div>
+
+<!-- ============================ Боль ============================ -->
+<section class="section" id="pain">
+  <div class="shell">
+    <div class="section-head">
+      <h2 class="display display--l" data-split>Надоели ведущие, после которых гости уходят <span class="serif acid">к десяти?</span></h2>
+      <p class="lead" data-reveal data-delay="2">
+        Вы платите за вечер, который будут вспоминать годами. А получаете конкурс с шариками,
+        микрофон в ухо и тайминг, который держится на честном слове. Вот что я делаю иначе.
+      </p>
+    </div>
+
+    <div class="pain__grid">
+      <article class="pain__row" data-reveal>
+        <div class="pain__num">01</div>
+        <h3 class="pain__q">Программа из девяностых</h3>
+        <p class="pain__a">Шарики, «а теперь горько» и конкурс с яблоком между коленями. <b>Я собираю программу с нуля под ваших гостей</b> — под их возраст, профессии и то, как они шутят между собой.</p>
+      </article>
+      <article class="pain__row" data-reveal>
+        <div class="pain__num">02</div>
+        <h3 class="pain__q">Шутки, за которые неловко</h3>
+        <p class="pain__a">Пошлость на юбилее при родителях и детях убивает вечер за минуту. <b>Мой юмор работает на всю комнату сразу</b> — от бабушки до подростка, и никого не ставит в неудобное положение.</p>
+      </article>
+      <article class="pain__row" data-reveal>
+        <div class="pain__num">03</div>
+        <h3 class="pain__q">Ведущий не слышит зал</h3>
+        <p class="pain__a">Сценарий идёт по бумажке, даже когда гостям уже не смешно. <b>Я меняю ход вечера по ситуации</b> — десять лет практики учат читать зал по первым пятнадцати минутам.</p>
+      </article>
+      <article class="pain__row" data-reveal>
+        <div class="pain__num">04</div>
+        <h3 class="pain__q">Вечер держится на вас</h3>
+        <p class="pain__a">Заказчик бегает между кухней, диджеем и опоздавшими гостями вместо того, чтобы праздновать. <b>Я беру на себя тайминг и подрядчиков</b>, а вы весь вечер остаётесь гостем своего праздника.</p>
+      </article>
+      <article class="pain__row" data-reveal>
+        <div class="pain__num">05</div>
+        <h3 class="pain__q">Ведущего видно больше, чем виновника</h3>
+        <p class="pain__a">Микрофон не отпускают, солируют вместо юбиляра. <b>Главный герой вечера — не я</b>. Моя работа в том, чтобы гости говорили о вас, а не обо мне.</p>
+      </article>
+      <article class="pain__row" data-reveal>
+        <div class="pain__num">06</div>
+        <h3 class="pain__q">Сюрпризы в день события</h3>
+        <p class="pain__a">Не приехал звук, сдвинулась подача блюд, потерялся тамада. <b>Договор, репетиция с площадкой и запасной план</b> на каждый блок программы — чтобы день прошёл по плану.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ О себе ========================== -->
+<section class="section" id="about">
+  <div class="shell">
+    <div class="about__grid">
+      <figure class="about__media" data-parallax="0.12" data-reveal>
+        <img src="img/inna-01.jpg" alt="Инна Сибиль — портрет">
+        <figcaption class="about__badge">10<small>лет на сцене</small></figcaption>
+      </figure>
+
+      <div class="about__text">
+        <p class="eyebrow" data-reveal>О ведущей</p>
+        <h2 class="display display--m" data-split style="margin:22px 0 30px">Инна Сибиль</h2>
+        <p class="drop serif" data-reveal data-delay="1">
+          Хороший вечер выглядит так, будто он сложился сам собой. На самом деле за этим стоят
+          недели подготовки — и это моя часть работы.
+        </p>
+        <p data-reveal data-delay="2">
+          Я веду мероприятия в Москве и области с <span class="ph">2015 года</span>: юбилеи и дни рождения,
+          свадьбы, корпоративы и семейные торжества. За это время через мои вечера прошли
+          и камерные ужины на двенадцать человек, и залы на несколько сотен гостей.
+        </p>
+        <p data-reveal data-delay="3">
+          Я не работаю по универсальному сценарию. Перед каждым событием мы разбираем, кто придёт,
+          что это за люди, что для них важно и над чем они смеются. Из этого собирается программа,
+          в которой гостям хочется участвовать, а не отсиживаться за столом.
+        </p>
+        <p data-reveal data-delay="4">
+          В день события я беру одно мероприятие. Никаких перебежек с площадки на площадку:
+          ваш вечер получает всё внимание целиком.
+        </p>
+
+        <div class="about__sign" data-reveal data-delay="5">
+          <div class="seal" data-cursor="hover">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <defs><path id="circlePath" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"></path></defs>
+              <text><textPath href="#circlePath">Ведущая мероприятий · Москва · с 2015 года · </textPath></text>
+            </svg>
+            <div class="seal__core">И.С.</div>
+          </div>
+          <div>
+            <p class="small">Свободные даты обсуждаем лично.<br>Отвечаю в течение дня.</p>
+            <a class="btn btn--sm" href="#contact" data-magnetic data-cursor="hover" style="margin-top:14px">
+              Написать мне <i class="btn__arrow"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Цифры =========================== -->
+<section class="section" id="stats" style="padding-top:0">
+  <div class="shell">
+    <p class="eyebrow" data-reveal style="margin-bottom:32px">Коротко о практике <span class="ph-note">цифры уточнить</span></p>
+    <div class="stats">
+      <div class="stat" data-reveal>
+        <div class="stat__num"><span data-count="10">0</span></div>
+        <p class="stat__label">лет провожу мероприятия в Москве и области</p>
+      </div>
+      <div class="stat" data-reveal data-delay="1">
+        <div class="stat__num"><span data-count="600">0</span><i>+</i></div>
+        <p class="stat__label">проведённых вечеров: от камерных ужинов до залов на 300 гостей</p>
+      </div>
+      <div class="stat" data-reveal data-delay="2">
+        <div class="stat__num"><span data-count="92">0</span><i>%</i></div>
+        <p class="stat__label">клиентов приходят по рекомендации или возвращаются снова</p>
+      </div>
+      <div class="stat" data-reveal data-delay="3">
+        <div class="stat__num"><span data-count="1">0</span></div>
+        <p class="stat__label">событие в день — ваш вечер не делится ни с кем</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Кадры (морф) ==================== -->
+<section class="reel" id="reel" aria-label="Кадры с мероприятий">
+  <div class="reel__sticky">
+    <div class="reel__canvas"><canvas id="gl-reel" aria-hidden="true"></canvas></div>
+    <div class="reel__fallback"><img src="img/inna-02.jpg" alt="Инна Сибиль на мероприятии"></div>
+    <div class="reel__veil" aria-hidden="true"></div>
+
+    <div class="reel__content shell">
+      <div class="reel__caption">
+        <div class="reel__title" id="reel-title">
+          <span class="is-active">Вечер начинается<br>с первой минуты</span>
+          <span>Гости включаются<br>сами</span>
+          <span>Тайминг держится<br>сам собой</span>
+          <span>И никто<br>не хочет уходить</span>
+        </div>
+        <div class="reel__dots" id="reel-dots" aria-hidden="true">
+          <i class="reel__dot"><i></i></i>
+          <i class="reel__dot"><i></i></i>
+          <i class="reel__dot"><i></i></i>
+          <i class="reel__dot"><i></i></i>
+        </div>
+      </div>
+      <p class="small" style="margin-top:22px">
+        <span class="ph-note">Плейсхолдер</span>
+        Здесь встанут кадры и видео с реальных мероприятий, когда пришлёте материалы.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Форматы ========================= -->
+<section class="section formats" id="formats">
+  <div class="shell">
+    <div class="section-head">
+      <h2 class="display display--l" data-split>Что я <span class="serif acid">веду</span></h2>
+      <p class="lead" data-reveal data-delay="2">
+        Программа собирается под повод и под гостей. Стоимость зависит от даты, площадки
+        и продолжительности вечера — итоговую сумму называю после разговора.
+        <span class="ph-note">Цены уточнить</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="shell">
+    <div class="formats__track" id="formats-track" data-drag>
+      <article class="format" data-cursor="drag">
+        <div class="format__idx">01</div>
+        <h3 class="format__name">Юбилей</h3>
+        <p class="format__desc">Вечер, где виновник торжества не отсиживается во главе стола, а становится главным героем истории. Разговорные блоки вместо конкурсов на скорость.</p>
+        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
+      </article>
+      <article class="format" data-cursor="drag">
+        <div class="format__idx">02</div>
+        <h3 class="format__name">День рождения</h3>
+        <p class="format__desc">От камерного ужина на двенадцать человек до большого праздника. Формат подстраивается под компанию, а не наоборот.</p>
+        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
+      </article>
+      <article class="format" data-cursor="drag">
+        <div class="format__idx">03</div>
+        <h3 class="format__name">Свадьба</h3>
+        <p class="format__desc">Выездная церемония, банкет и вечерняя часть. Работаю в связке с площадкой, диджеем и фотографом, чтобы день шёл по таймингу.</p>
+        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
+      </article>
+      <article class="format" data-cursor="drag">
+        <div class="format__idx">04</div>
+        <h3 class="format__name">Корпоратив</h3>
+        <p class="format__desc">Награждения, итоги года и неформальная часть без принудительного веселья. Коллеги уходят с ощущением, что вечер стоил их времени.</p>
+        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
+      </article>
+      <article class="format" data-cursor="drag">
+        <div class="format__idx">05</div>
+        <h3 class="format__name">Новый год</h3>
+        <p class="format__desc">Самая занятая дата в году — бронируется заранее. Программа с учётом того, что половина зала уже отметила до вашего начала.</p>
+        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
+      </article>
+      <article class="format" data-cursor="drag">
+        <div class="format__idx">06</div>
+        <h3 class="format__name">Семейное торжество</h3>
+        <p class="format__desc">Годовщины, крестины, встречи поколений. Тёплый формат, где разговор важнее громкой музыки.</p>
+        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
+      </article>
+      <article class="format" data-cursor="drag">
+        <div class="format__idx">07</div>
+        <h3 class="format__name">Открытие и презентация</h3>
+        <p class="format__desc">Деловой формат: официальная часть, спикеры, фуршет. Держу регламент и не даю мероприятию расползтись по времени.</p>
+        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
+      </article>
+      <article class="format" data-cursor="drag">
+        <div class="format__idx">08</div>
+        <h3 class="format__name">Выпускной</h3>
+        <p class="format__desc">Школа и университет: программа для выпускников, которая одинаково нормально смотрится и для родителей в зале.</p>
+        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
+      </article>
+    </div>
+
+    <div class="formats__hint">
+      <p class="small"><span id="formats-counter">01</span> / 08 форматов</p>
+      <div class="progress-line"><i id="formats-progress"></i></div>
+      <a class="btn btn--sm" href="#contact" data-magnetic data-cursor="hover">Обсудить мой формат <i class="btn__arrow"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Процесс ========================= -->
+<section class="section" id="process">
+  <div class="shell">
+    <div class="section-head">
+      <h2 class="display display--l" data-split>Как мы <span class="serif acid">готовим</span> ваш вечер</h2>
+      <p class="lead" data-reveal data-delay="2">
+        От первого сообщения до последнего тоста. Никаких сюрпризов в день события —
+        всё, что можно обсудить заранее, обсуждается заранее.
+      </p>
+    </div>
+
+    <div class="steps">
+      <article class="step" data-reveal>
+        <div class="step__num">01</div>
+        <h3 class="step__title">Проверяем дату</h3>
+        <div>
+          <p class="step__text">Пишете мне повод, дату и примерное количество гостей. Отвечаю, свободен ли день, и называю вилку по стоимости.</p>
+          <p class="step__meta">10 минут переписки</p>
+        </div>
+      </article>
+      <article class="step" data-reveal>
+        <div class="step__num">02</div>
+        <h3 class="step__title">Знакомимся</h3>
+        <div>
+          <p class="step__text">Встречаемся лично или созваниваемся. Разбираем, кто придёт, какая атмосфера нужна и чего вы точно не хотите видеть на своём празднике.</p>
+          <p class="step__meta">Встреча или видеозвонок</p>
+        </div>
+      </article>
+      <article class="step" data-reveal>
+        <div class="step__num">03</div>
+        <h3 class="step__title">Фиксируем договорённости</h3>
+        <div>
+          <p class="step__text">Договор, предоплата и забронированная дата. С этого момента день ваш — других мероприятий на него я не беру.</p>
+          <p class="step__meta">Договор и предоплата <span class="ph-note">условия уточнить</span></p>
+        </div>
+      </article>
+      <article class="step" data-reveal>
+        <div class="step__num">04</div>
+        <h3 class="step__title">Собираем сценарий</h3>
+        <div>
+          <p class="step__text">Пишу программу под ваших гостей, согласовываю блоки и тайминг, связываюсь с площадкой, диджеем и фотографом. Вы читаете и правите.</p>
+          <p class="step__meta">За 2–4 недели до события</p>
+        </div>
+      </article>
+      <article class="step" data-reveal>
+        <div class="step__num">05</div>
+        <h3 class="step__title">Ведём праздник</h3>
+        <div>
+          <p class="step__text">Приезжаю заранее, проверяю звук и свет, встречаю гостей. Дальше вы просто празднуете, а вечер идёт сам собой.</p>
+          <p class="step__meta">Ваш день</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Отзывы ========================== -->
+<section class="section" id="reviews">
+  <div class="shell">
+    <div class="section-head">
+      <h2 class="display display--l" data-split>Что говорят <span class="serif acid">после</span></h2>
+      <p class="lead" data-reveal data-delay="2">
+        Реальные отзывы с именами и датами поставим сюда, когда пришлёте их из переписок
+        и с площадок. Пока — заготовки.
+        <span class="ph-note">Плейсхолдеры</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="shell">
+    <div class="reviews__track" id="reviews-track" data-drag>
+      <blockquote class="review" data-cursor="drag">
+        <div class="review__stars">★★★★★</div>
+        <p class="review__text">Текст отзыва клиента. Здесь будет живая цитата о том, как прошёл вечер и что запомнилось гостям.</p>
+        <footer class="review__by"><b class="ph">Имя клиента</b><span class="ph">Юбилей, 2025</span></footer>
+      </blockquote>
+      <blockquote class="review" data-cursor="drag">
+        <div class="review__stars">★★★★★</div>
+        <p class="review__text">Текст отзыва клиента. Место для истории про то, как Инна собрала программу под конкретную компанию гостей.</p>
+        <footer class="review__by"><b class="ph">Имя клиента</b><span class="ph">Свадьба, 2025</span></footer>
+      </blockquote>
+      <blockquote class="review" data-cursor="drag">
+        <div class="review__stars">★★★★★</div>
+        <p class="review__text">Текст отзыва клиента. Здесь хорошо встанет отзыв от корпоративного заказчика с названием компании.</p>
+        <footer class="review__by"><b class="ph">Имя клиента</b><span class="ph">Корпоратив, 2024</span></footer>
+      </blockquote>
+      <blockquote class="review" data-cursor="drag">
+        <div class="review__stars">★★★★★</div>
+        <p class="review__text">Текст отзыва клиента. Подойдёт цитата о работе с площадкой и подрядчиками в день события.</p>
+        <footer class="review__by"><b class="ph">Имя клиента</b><span class="ph">День рождения, 2024</span></footer>
+      </blockquote>
+      <blockquote class="review" data-cursor="drag">
+        <div class="review__stars">★★★★★</div>
+        <p class="review__text">Текст отзыва клиента. Финальная цитата — о том, что гости не расходились до конца вечера.</p>
+        <footer class="review__by"><b class="ph">Имя клиента</b><span class="ph">Семейное торжество, 2023</span></footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Телеграм ======================== -->
+<section class="section" id="telegram" style="padding-top:0">
+  <div class="shell">
+    <div class="tg" data-reveal>
+      <div>
+        <p class="eyebrow eyebrow--plain" style="color:var(--acid)">Telegram-канал</p>
+        <h2 class="tg__title" style="margin-top:18px">Закулисье<br>вместо витрины</h2>
+        <ul class="tg__list">
+          <li>Кадры и видео с последних мероприятий</li>
+          <li>Свободные и занятые даты в календаре</li>
+          <li>Как устроена подготовка вечера изнутри</li>
+          <li>Идеи для программы, которые можно забрать себе</li>
+        </ul>
+        <a class="btn btn--solid btn--lg" style="margin-top:32px"
+           href="https://t.me/innasofijasibil" target="_blank" rel="noopener"
+           data-magnetic data-cursor="hover">
+          Открыть канал <i class="btn__arrow"></i>
+        </a>
+      </div>
+      <div class="seal" style="justify-self:center" data-cursor="hover">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <defs><path id="tgPath" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"></path></defs>
+          <text><textPath href="#tgPath">@innasofijasibil · подписаться · @innasofijasibil · </textPath></text>
+        </svg>
+        <div class="seal__core">TG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================= -->
+<section class="section" id="faq">
+  <div class="shell">
+    <div class="section-head">
+      <h2 class="display display--l" data-split>Вопросы, которые <span class="serif acid">задают чаще всего</span></h2>
+      <p class="lead" data-reveal data-delay="2">
+        Если вашего вопроса здесь нет — напишите, отвечу лично.
+        <span class="ph-note">Ответы согласовать с Инной</span>
+      </p>
+    </div>
+
+    <div class="faq" id="faq-list">
+      <div class="faq__item">
+        <button class="faq__head" data-cursor="hover"><span class="faq__q">Как узнать, свободна ли моя дата?</span><span class="faq__sign"></span></button>
+        <div class="faq__body"><div class="faq__inner">Напишите дату в форме внизу страницы или в Telegram. Я держу календарь бронирований и отвечаю в течение дня. На популярные даты — конец декабря, майские и субботы сентября — даты разбирают за несколько месяцев.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__head" data-cursor="hover"><span class="faq__q">Сколько стоит и что входит в стоимость?</span><span class="faq__sign"></span></button>
+        <div class="faq__body"><div class="faq__inner">Стоимость зависит от даты, формата, площадки и продолжительности вечера. В базу входит подготовка сценария, встречи и переписка, работа на мероприятии и координация подрядчиков. Точную сумму называю после разговора, чтобы не продавать вам лишнее. <span class="ph">Диапазон цен уточнить.</span></div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__head" data-cursor="hover"><span class="faq__q">Работаете ли вы по договору?</span><span class="faq__sign"></span></button>
+        <div class="faq__body"><div class="faq__inner">Да. В договоре фиксируем дату, время, площадку, состав работ и стоимость. После предоплаты дата закрепляется за вами, и других мероприятий на этот день я не беру. <span class="ph">Размер предоплаты уточнить.</span></div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__head" data-cursor="hover"><span class="faq__q">Можно ли изменить сценарий под наши пожелания?</span><span class="faq__sign"></span></button>
+        <div class="faq__body"><div class="faq__inner">Не просто можно — так и работаем. Готового сценария «для всех» у меня нет. Программа собирается после того, как я узнаю, кто придёт и что для вас важно. Вы читаете черновик и вычёркиваете всё, что не нравится.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__head" data-cursor="hover"><span class="faq__q">А если гости не захотят участвовать?</span><span class="faq__sign"></span></button>
+        <div class="faq__body"><div class="faq__inner">Никого не вытаскиваю к микрофону силой. В программе всегда есть блоки для тех, кто хочет участвовать, и есть вечер для тех, кто пришёл поговорить и поесть. Обе группы уходят довольными.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__head" data-cursor="hover"><span class="faq__q">Вы работаете со своей командой?</span><span class="faq__sign"></span></button>
+        <div class="faq__body"><div class="faq__inner">У меня есть проверенные диджеи, музыканты, фотографы и артисты, которых могу порекомендовать. Если подрядчики уже ваши — работаю с ними: списываюсь заранее, согласовываю тайминг и точки входа.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__head" data-cursor="hover"><span class="faq__q">Нужен ли свой звук и реквизит?</span><span class="faq__sign"></span></button>
+        <div class="faq__body"><div class="faq__inner">Обычно звук предоставляет площадка или диджей — я проверяю его заранее. Реквизит для программы обсуждаем отдельно: часть беру на себя, часть проще заказать на месте. <span class="ph">Условия по технике уточнить.</span></div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__head" data-cursor="hover"><span class="faq__q">Сколько длится ваша работа на вечере?</span><span class="faq__sign"></span></button>
+        <div class="faq__body"><div class="faq__inner">Приезжаю за час-полтора до гостей: проверяю площадку, звук и свет, встречаю первых приехавших. Стандартный банкет — <span class="ph">5–6 часов</span>. Продление после полуночи обсуждается заранее и оплачивается отдельно.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__head" data-cursor="hover"><span class="faq__q">Как вы одеты на мероприятии?</span><span class="faq__sign"></span></button>
+        <div class="faq__body"><div class="faq__inner">Согласовываем заранее под стиль и цветовую гамму вечера. Если у праздника есть дресс-код, я в него вписываюсь и не перетягиваю внимание с виновников торжества.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__head" data-cursor="hover"><span class="faq__q">Выезжаете ли вы за пределы Москвы?</span><span class="faq__sign"></span></button>
+        <div class="faq__body"><div class="faq__inner">Да, работаю по Москве и области, выезжаю в другие города по договорённости. Логистика и проживание в таком случае обсуждаются отдельно. <span class="ph">Условия выезда уточнить.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Портрет из точек =============== -->
+<section class="dust" id="dust">
+  <div class="dust__canvas"><canvas id="gl-particles" aria-hidden="true"></canvas></div>
+  <img class="dust__fallback" src="img/inna-04.jpg" alt="" aria-hidden="true">
+  <div class="shell dust__inner">
+    <p class="eyebrow" data-reveal>Что вы получаете</p>
+    <h2 class="display display--m dust__title" data-split>Один вечер.<br>Один ведущий.<br><span class="serif acid">Ваша история.</span></h2>
+    <p class="lead" data-reveal data-delay="2" style="margin-top:22px">
+      Программа собирается из ваших людей и вашего повода. Поэтому её нельзя
+      повторить на чужом празднике — и поэтому её запоминают.
+    </p>
+  </div>
+</section>
+
+<!-- ============================ Финал / заявка ================== -->
+<section class="cta" id="contact">
+
+  <div class="shell cta__inner">
+    <div class="cta__grid">
+      <div>
+        <p class="eyebrow" data-reveal>Бронирование</p>
+        <h2 class="display display--l" data-split style="margin:24px 0 28px">
+          Ваша дата <span class="serif acid">ещё свободна</span>
+        </h2>
+        <p class="lead" data-reveal data-delay="2">
+          Напишите повод и дату — отвечу, свободен ли день, и сразу назову вилку по стоимости.
+          Без обязательств и без навязчивых звонков.
+        </p>
+
+        <div class="contact-list">
+          <a class="contact-row" href="https://t.me/innasofijasibil" target="_blank" rel="noopener" data-cursor="hover" data-reveal>
+            <span>Telegram</span><b>@innasofijasibil</b>
+          </a>
+          <a class="contact-row" href="tel:+70000000000" data-cursor="hover" data-reveal data-delay="1">
+            <span>Телефон</span><b class="ph">+7 000 000-00-00</b>
+          </a>
+          <a class="contact-row" href="mailto:hello@example.com" data-cursor="hover" data-reveal data-delay="2">
+            <span>Почта</span><b class="ph">почта@пример.ru</b>
+          </a>
+          <div class="contact-row" data-reveal data-delay="3">
+            <span>География</span><b>Москва и область, выезды по договорённости</b>
+          </div>
+        </div>
+      </div>
+
+      <form class="form" id="lead-form" novalidate data-reveal data-delay="2">
+        <div class="form__row">
+          <div class="field">
+            <input type="text" id="f-name" name="name" required autocomplete="name" placeholder=" ">
+            <label for="f-name">Как вас зовут</label>
+          </div>
+          <div class="field">
+            <input type="tel" id="f-phone" name="phone" required autocomplete="tel" placeholder=" ">
+            <label for="f-phone">Телефон или ник в Telegram</label>
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="field field--select">
+            <select id="f-type" name="type">
+              <option>Юбилей</option>
+              <option>День рождения</option>
+              <option>Свадьба</option>
+              <option>Корпоратив</option>
+              <option>Новый год</option>
+              <option>Семейное торжество</option>
+              <option>Открытие или презентация</option>
+              <option>Другое</option>
+            </select>
+            <label for="f-type">Повод</label>
+          </div>
+          <div class="field">
+            <input type="date" id="f-date" name="date" placeholder=" ">
+            <label for="f-date">Дата события</label>
+          </div>
+        </div>
+        <div class="field">
+          <textarea id="f-note" name="note" rows="2" placeholder=" "></textarea>
+          <label for="f-note">Сколько гостей, площадка, пожелания</label>
+        </div>
+        <div class="form__foot">
+          <button class="btn btn--solid" type="submit" data-magnetic data-cursor="hover">
+            Отправить заявку <i class="btn__arrow"></i>
+          </button>
+          <p class="form__note">
+            Нажимая кнопку, вы соглашаетесь на обработку данных.
+            <span class="ph-note">Форма пока не отправляется</span>
+          </p>
+        </div>
+        <p class="form__status" id="form-status" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Подвал ========================== -->
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div>
+        <p class="eyebrow eyebrow--plain small">Инна Сибиль — ведущая мероприятий</p>
+        <p class="lead" style="margin-top:18px;font-size:1rem">
+          Свадьбы, юбилеи, дни рождения и корпоративы в Москве и области.
+          Один вечер в день, авторский сценарий, договор.
+        </p>
+      </div>
+      <div class="footer__col">
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="#about" data-cursor="hover">О себе</a></li>
+          <li><a href="#formats" data-cursor="hover">Форматы</a></li>
+          <li><a href="#process" data-cursor="hover">Как работаем</a></li>
+          <li><a href="#faq" data-cursor="hover">Вопросы</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Связь</h4>
+        <ul>
+          <li><a href="https://t.me/innasofijasibil" target="_blank" rel="noopener" data-cursor="hover">Telegram-канал</a></li>
+          <li><a class="ph" href="tel:+70000000000" data-cursor="hover">+7 000 000-00-00</a></li>
+          <li><a class="ph" href="mailto:hello@example.com" data-cursor="hover">почта@пример.ru</a></li>
+          <li><span class="ph">Соцсети добавить</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__mark" aria-hidden="true">Инна Сибиль · Инна Сибиль</div>
+
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Инна Сибиль</span>
+      <span class="ph">Реквизиты и политика конфиденциальности — добавить</span>
+      <a href="#top" data-cursor="hover">Наверх</a>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<button class="to-top" id="to-top" aria-label="Наверх"><i></i></button>
+
+<script src="js/assets.js"></script>
+<script src="js/core.js"></script>
+<script src="js/gl.js"></script>
+<script src="js/shaders.js"></script>
+<script src="js/scenes.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
