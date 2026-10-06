@@ -9,12 +9,69 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Инна София — поющая ведущая мероприятий в Москве">
 <meta property="og:description" content="Влюбитесь в героя. В историю. Переживите эмоции. Поющая ведущая, лауреат международных вокальных конкурсов, 10 лет на сцене.">
-<meta property="og:image" content="img/inna-03.jpg">
+<meta property="og:url" content="https://SITE_DOMAIN/">
+<meta property="og:image" content="https://SITE_DOMAIN/img/inna-03.jpg">
+<meta property="og:locale" content="ru_RU">
+<link rel="canonical" href="https://SITE_DOMAIN/">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308080a'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23c9db4a'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;800&family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/Unbounded-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Manrope-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://SITE_DOMAIN/#inna",
+      "name": "Инна София",
+      "jobTitle": "Поющая ведущая мероприятий",
+      "description": "Поющая ведущая свадеб, юбилеев, дней рождения и корпоративов в Москве и Московской области. Лауреат международных вокальных конкурсов.",
+      "url": "https://SITE_DOMAIN/",
+      "image": "https://SITE_DOMAIN/img/inna-03.jpg",
+      "telephone": "+7 913 267-36-50",
+      "email": "isib78@mail.ru",
+      "workLocation": {"@type": "Place", "name": "Москва и Московская область"},
+      "sameAs": [
+        "https://t.me/innasofijasibil",
+        "https://profi.ru/profile/SibilIV"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://SITE_DOMAIN/#service",
+      "name": "Ведущая мероприятий с живым вокалом",
+      "serviceType": "Ведущий мероприятий",
+      "provider": {"@id": "https://SITE_DOMAIN/#inna"},
+      "areaServed": [
+        {"@type": "City", "name": "Москва"},
+        {"@type": "AdministrativeArea", "name": "Московская область"}
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Форматы мероприятий",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ведущая на юбилей"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ведущая на день рождения"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ведущая на свадьбу"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ведущая на корпоратив"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ведущая на Новый год"}}
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://SITE_DOMAIN/#site",
+      "url": "https://SITE_DOMAIN/",
+      "name": "Инна София — поющая ведущая",
+      "inLanguage": "ru",
+      "about": {"@id": "https://SITE_DOMAIN/#inna"}
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -83,24 +140,24 @@
 <section class="hero" id="hero">
   <div class="hero__portrait" id="hero-portrait">
     <canvas id="gl-portrait" aria-hidden="true"></canvas>
-    <img src="img/inna-03.jpg" alt="Инна София, поющая ведущая мероприятий">
+    <img src="img/inna-03.jpg" width="854" height="1280" alt="Инна София, поющая ведущая мероприятий в Москве" fetchpriority="high">
   </div>
 
   <div class="shell hero__inner">
     <div class="hero__kicker" data-reveal>
-      <span class="hero__tag">Поющая ведущая · Москва</span>
+      <h1 class="hero__tag hero__h1">Инна София — поющая ведущая мероприятий в Москве</h1>
       <span class="hero__tag">Лауреат вокальных конкурсов</span>
       <span class="hero__tag">10 лет на сцене</span>
     </div>
 
-    <h1 class="hero__title">
+    <div class="hero__title">
       <span class="display display--xl" data-split>Влюбитесь</span>
       <span class="hero__line-2">
         <span class="display display--xl" data-split>в героя.</span>
         <span class="display display--xl serif acid" data-split>В историю.</span>
       </span>
       <span class="display display--xl" data-split>Переживите эмоции.</span>
-    </h1>
+    </div>
 
     <div class="hero__meta">
       <p class="lead" data-reveal data-delay="2">
@@ -114,7 +171,7 @@
         </a>
       </div>
       <div class="hero__scroll" data-reveal data-delay="4">
-        <span>Ближайшие свободные даты — <span class="ph">уточнить</span></span>
+        <span>Свободные даты подскажу в Telegram или WhatsApp</span>
       </div>
     </div>
   </div>
@@ -188,7 +245,7 @@
   <div class="shell">
     <div class="about__grid">
       <figure class="about__media" data-parallax="0.12" data-reveal>
-        <img src="img/inna-01.jpg" alt="Инна София — портрет">
+        <img src="img/inna-01.jpg" width="854" height="1280" alt="Инна София, студийный портрет в оливковом жакете" loading="lazy">
         <figcaption class="about__badge">10<small>лет на сцене</small></figcaption>
       </figure>
 
@@ -201,7 +258,7 @@
         </p>
         <p data-reveal data-delay="2">
           Я — поющая ведущая и лауреат международных вокальных конкурсов. Провожу мероприятия
-          в Москве и области с <span class="ph">2015 года</span>: юбилеи и дни рождения,
+          в Москве и области больше десяти лет: юбилеи и дни рождения,
           свадьбы, корпоративы и семейные торжества. За это время через мои вечера прошли
           и камерные ужины на двенадцать человек, и залы на несколько сотен гостей.
         </p>
@@ -251,19 +308,19 @@
 <!-- ============================ Цифры =========================== -->
 <section class="section" id="stats" style="padding-top:0">
   <div class="shell">
-    <p class="eyebrow" data-reveal style="margin-bottom:32px">Коротко о практике <span class="ph-note">цифры уточнить</span></p>
+    <p class="eyebrow" data-reveal style="margin-bottom:32px">Коротко о практике</p>
     <div class="stats">
       <div class="stat" data-reveal>
         <div class="stat__num"><span data-count="10">0</span></div>
         <p class="stat__label">лет провожу мероприятия в Москве и области</p>
       </div>
       <div class="stat" data-reveal data-delay="1">
-        <div class="stat__num"><span data-count="600">0</span><i>+</i></div>
-        <p class="stat__label">проведённых вечеров: от камерных ужинов до залов на 300 гостей</p>
+        <div class="stat__num"><span>5,0</span></div>
+        <p class="stat__label">средняя оценка клиентов на Профи.ру</p>
       </div>
       <div class="stat" data-reveal data-delay="2">
-        <div class="stat__num"><span data-count="92">0</span><i>%</i></div>
-        <p class="stat__label">клиентов приходят по рекомендации или возвращаются снова</p>
+        <div class="stat__num"><span data-count="15">0</span></div>
+        <p class="stat__label">отзывов на Профи.ру, каждый после реального заказа</p>
       </div>
       <div class="stat" data-reveal data-delay="3">
         <div class="stat__num"><span data-count="1">0</span></div>
@@ -277,7 +334,7 @@
 <section class="reel" id="reel" aria-label="Кадры с мероприятий">
   <div class="reel__sticky">
     <div class="reel__canvas"><canvas id="gl-reel" aria-hidden="true"></canvas></div>
-    <div class="reel__fallback"><img src="img/inna-02.jpg" alt="Инна София на мероприятии"></div>
+    <div class="reel__fallback"><img src="img/inna-02.jpg" width="854" height="1280" alt="Инна София за столиком летнего кафе с чашкой кофе" loading="lazy"></div>
     <div class="reel__veil" aria-hidden="true"></div>
 
     <div class="reel__content shell">
@@ -296,8 +353,7 @@
         </div>
       </div>
       <p class="small" style="margin-top:22px">
-        <span class="ph-note">Плейсхолдер</span>
-        Здесь встанут кадры и видео с реальных мероприятий, когда пришлёте материалы.
+        
       </p>
     </div>
   </div>
@@ -311,7 +367,6 @@
       <p class="lead" data-reveal data-delay="2">
         Программа собирается под повод и под гостей. Стоимость зависит от даты, площадки
         и продолжительности вечера — итоговую сумму называю после разговора.
-        <span class="ph-note">Цены уточнить</span>
       </p>
     </div>
   </div>
@@ -322,49 +377,41 @@
         <div class="format__idx">01</div>
         <h3 class="format__name">Юбилей</h3>
         <p class="format__desc">Вечер, где виновник торжества не отсиживается во главе стола, а становится главным героем истории. Разговорные блоки вместо конкурсов на скорость.</p>
-        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
       </article>
       <article class="format" data-cursor="drag">
         <div class="format__idx">02</div>
         <h3 class="format__name">День рождения</h3>
         <p class="format__desc">От камерного ужина на двенадцать человек до большого праздника. Формат подстраивается под компанию, а не наоборот.</p>
-        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
       </article>
       <article class="format" data-cursor="drag">
         <div class="format__idx">03</div>
         <h3 class="format__name">Свадьба</h3>
         <p class="format__desc">Выездная церемония, банкет и вечерняя часть. Работаю в связке с площадкой, диджеем и фотографом, чтобы день шёл по таймингу.</p>
-        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
       </article>
       <article class="format" data-cursor="drag">
         <div class="format__idx">04</div>
         <h3 class="format__name">Корпоратив</h3>
         <p class="format__desc">Награждения, итоги года и неформальная часть без принудительного веселья. Коллеги уходят с ощущением, что вечер стоил их времени.</p>
-        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
       </article>
       <article class="format" data-cursor="drag">
         <div class="format__idx">05</div>
         <h3 class="format__name">Новый год</h3>
         <p class="format__desc">Самая занятая дата в году — бронируется заранее. Программа с учётом того, что половина зала уже отметила до вашего начала.</p>
-        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
       </article>
       <article class="format" data-cursor="drag">
         <div class="format__idx">06</div>
         <h3 class="format__name">Семейное торжество</h3>
         <p class="format__desc">Годовщины, крестины, встречи поколений. Тёплый формат, где разговор важнее громкой музыки.</p>
-        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
       </article>
       <article class="format" data-cursor="drag">
         <div class="format__idx">07</div>
         <h3 class="format__name">Открытие и презентация</h3>
         <p class="format__desc">Деловой формат: официальная часть, спикеры, фуршет. Держу регламент и не даю мероприятию расползтись по времени.</p>
-        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
       </article>
       <article class="format" data-cursor="drag">
         <div class="format__idx">08</div>
         <h3 class="format__name">Выпускной</h3>
         <p class="format__desc">Школа и университет: программа для выпускников, которая одинаково нормально смотрится и для родителей в зале.</p>
-        <div class="format__price"><span>от</span> <b class="ph">00 000 ₽</b></div>
       </article>
     </div>
 
@@ -409,7 +456,7 @@
         <h3 class="step__title">Фиксируем договорённости</h3>
         <div>
           <p class="step__text">Договор, предоплата и забронированная дата. С этого момента день ваш — других мероприятий на него я не беру.</p>
-          <p class="step__meta">Договор и предоплата <span class="ph-note">условия уточнить</span></p>
+          <p class="step__meta">Договор и предоплата</p>
         </div>
       </article>
       <article class="step" data-reveal>
@@ -466,7 +513,7 @@
         <div class="review__top"><span class="review__stars" aria-label="Оценка 5 из 5">★★★★★</span><span class="review__src">Профи.ру</span></div>
         <p class="review__text">Инна, просто огонь. Всё как я и хотела, спокойно, размеренно. Даже сына в ростовую куклу одела. А как она бесподобно поёт вживую, заслушаешься. Очень рекомендую, цена и качество соответствуют.</p>
         <button class="review__more" type="button" hidden>Читать целиком</button>
-        <footer class="review__by"><b>Наталья Белякова</b><span>Праздник · июль 2026</span></footer>
+        <footer class="review__by"><b>Наталья</b><span>Праздник · июль 2026</span></footer>
       </blockquote>
       <blockquote class="review" data-cursor="drag">
         <div class="review__top"><span class="review__stars" aria-label="Оценка 5 из 5">★★★★★</span><span class="review__src">Профи.ру</span></div>
@@ -563,22 +610,21 @@
       <h2 class="display display--l" data-split>Вопросы, которые <span class="serif acid">задают чаще всего</span></h2>
       <p class="lead" data-reveal data-delay="2">
         Если вашего вопроса здесь нет — напишите, отвечу лично.
-        <span class="ph-note">Ответы согласовать с Инной</span>
       </p>
     </div>
 
     <div class="faq" id="faq-list">
       <div class="faq__item">
         <button class="faq__head" data-cursor="hover"><span class="faq__q">Как узнать, свободна ли моя дата?</span><span class="faq__sign"></span></button>
-        <div class="faq__body"><div class="faq__inner">Напишите дату в форме внизу страницы или в Telegram. Я держу календарь бронирований и отвечаю в течение дня. На популярные даты — конец декабря, майские и субботы сентября — даты разбирают за несколько месяцев.</div></div>
+        <div class="faq__body"><div class="faq__inner">Напишите дату в Telegram или WhatsApp либо позвоните. Я держу календарь бронирований и отвечаю в течение дня. На популярные даты — конец декабря, майские и субботы сентября — даты разбирают за несколько месяцев.</div></div>
       </div>
       <div class="faq__item">
         <button class="faq__head" data-cursor="hover"><span class="faq__q">Сколько стоит и что входит в стоимость?</span><span class="faq__sign"></span></button>
-        <div class="faq__body"><div class="faq__inner">Стоимость зависит от даты, формата, площадки и продолжительности вечера. В базу входит подготовка сценария, встречи и переписка, работа на мероприятии и координация подрядчиков. Точную сумму называю после разговора, чтобы не продавать вам лишнее. <span class="ph">Диапазон цен уточнить.</span></div></div>
+        <div class="faq__body"><div class="faq__inner">Стоимость зависит от даты, формата, площадки и продолжительности вечера. В базу входит подготовка сценария, встречи и переписка, работа на мероприятии и координация подрядчиков. Точную сумму называю после разговора, чтобы не продавать вам лишнее.</div></div>
       </div>
       <div class="faq__item">
         <button class="faq__head" data-cursor="hover"><span class="faq__q">Работаете ли вы по договору?</span><span class="faq__sign"></span></button>
-        <div class="faq__body"><div class="faq__inner">Да. В договоре фиксируем дату, время, площадку, состав работ и стоимость. После предоплаты дата закрепляется за вами, и других мероприятий на этот день я не беру. <span class="ph">Размер предоплаты уточнить.</span></div></div>
+        <div class="faq__body"><div class="faq__inner">Да. В договоре фиксируем дату, время, площадку, состав работ и стоимость. После предоплаты дата закрепляется за вами, и других мероприятий на этот день я не беру.</div></div>
       </div>
       <div class="faq__item">
         <button class="faq__head" data-cursor="hover"><span class="faq__q">Можно ли изменить сценарий под наши пожелания?</span><span class="faq__sign"></span></button>
@@ -594,11 +640,11 @@
       </div>
       <div class="faq__item">
         <button class="faq__head" data-cursor="hover"><span class="faq__q">Нужен ли свой звук и реквизит?</span><span class="faq__sign"></span></button>
-        <div class="faq__body"><div class="faq__inner">Обычно звук предоставляет площадка или диджей — я проверяю его заранее. Реквизит для программы обсуждаем отдельно: часть беру на себя, часть проще заказать на месте. <span class="ph">Условия по технике уточнить.</span></div></div>
+        <div class="faq__body"><div class="faq__inner">Обычно звук предоставляет площадка или диджей — я проверяю его заранее. Реквизит для программы обсуждаем отдельно: часть беру на себя, часть проще заказать на месте.</div></div>
       </div>
       <div class="faq__item">
         <button class="faq__head" data-cursor="hover"><span class="faq__q">Сколько длится ваша работа на вечере?</span><span class="faq__sign"></span></button>
-        <div class="faq__body"><div class="faq__inner">Приезжаю за час-полтора до гостей: проверяю площадку, звук и свет, встречаю первых приехавших. Стандартный банкет — <span class="ph">5–6 часов</span>. Продление после полуночи обсуждается заранее и оплачивается отдельно.</div></div>
+        <div class="faq__body"><div class="faq__inner">Приезжаю за час-полтора до гостей: проверяю площадку, звук и свет, встречаю первых приехавших. Продолжительность вечера согласуем заранее. Продление после полуночи обсуждается заранее и оплачивается отдельно.</div></div>
       </div>
       <div class="faq__item">
         <button class="faq__head" data-cursor="hover"><span class="faq__q">Как вы одеты на мероприятии?</span><span class="faq__sign"></span></button>
@@ -606,7 +652,7 @@
       </div>
       <div class="faq__item">
         <button class="faq__head" data-cursor="hover"><span class="faq__q">Выезжаете ли вы за пределы Москвы?</span><span class="faq__sign"></span></button>
-        <div class="faq__body"><div class="faq__inner">Да, работаю по Москве и области, выезжаю в другие города по договорённости. Логистика и проживание в таком случае обсуждаются отдельно. <span class="ph">Условия выезда уточнить.</span></div></div>
+        <div class="faq__body"><div class="faq__inner">Да, работаю по Москве и области, выезжаю в другие города по договорённости. Логистика и проживание в таком случае обсуждаются отдельно.</div></div>
       </div>
     </div>
   </div>
@@ -615,7 +661,7 @@
 <!-- ============================ Портрет из точек =============== -->
 <section class="dust" id="dust">
   <div class="dust__canvas"><canvas id="gl-particles" aria-hidden="true"></canvas></div>
-  <img class="dust__fallback" src="img/inna-04.jpg" alt="" aria-hidden="true">
+  <img class="dust__fallback" src="img/inna-04.jpg" width="854" height="1280" alt="" aria-hidden="true" loading="lazy">
   <div class="shell dust__inner">
     <p class="eyebrow" data-reveal>Что вы получаете</p>
     <h2 class="display display--m dust__title" data-split>Один вечер.<br>Один ведущий.<br><span class="serif acid">Ваша история.</span></h2>
@@ -637,13 +683,13 @@
           Ваша дата <span class="serif acid">ещё свободна</span>
         </h2>
         <p class="lead" data-reveal data-delay="2">
-          Напишите повод и дату — отвечу, свободен ли день, и сразу назову вилку по стоимости.
+          Напишите повод и дату в Telegram или WhatsApp — отвечу, свободен ли день, и сразу назову вилку по стоимости.
           Без обязательств и без навязчивых звонков.
         </p>
 
         <div class="contact-list">
-          <a class="contact-row" href="https://t.me/innasofijasibil" target="_blank" rel="noopener" data-cursor="hover" data-reveal>
-            <span>Telegram</span><b>@innasofijasibil</b>
+          <a class="contact-row" href="https://t.me/+79132673650" target="_blank" rel="noopener" data-cursor="hover" data-reveal>
+            <span>Telegram</span><b>+7 913 267-36-50</b>
           </a>
           <a class="contact-row" href="tel:+79132673650" data-cursor="hover" data-reveal data-delay="1">
             <span>Телефон</span><b>+7 913 267-36-50</b>
@@ -660,52 +706,19 @@
         </div>
       </div>
 
-      <form class="form" id="lead-form" novalidate data-reveal data-delay="2">
-        <input type="text" name="_honey" class="form__hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="form__row">
-          <div class="field">
-            <input type="text" id="f-name" name="name" required autocomplete="name" placeholder=" ">
-            <label for="f-name">Как вас зовут</label>
-          </div>
-          <div class="field">
-            <input type="tel" id="f-phone" name="phone" required autocomplete="tel" placeholder=" ">
-            <label for="f-phone">Телефон или ник в Telegram</label>
-          </div>
-        </div>
-        <div class="form__row">
-          <div class="field field--select">
-            <select id="f-type" name="type">
-              <option>Юбилей</option>
-              <option>День рождения</option>
-              <option>Свадьба</option>
-              <option>Корпоратив</option>
-              <option>Новый год</option>
-              <option>Семейное торжество</option>
-              <option>Открытие или презентация</option>
-              <option>Другое</option>
-            </select>
-            <label for="f-type">Повод</label>
-          </div>
-          <div class="field">
-            <input type="date" id="f-date" name="date" placeholder=" ">
-            <label for="f-date">Дата события</label>
-          </div>
-        </div>
-        <div class="field">
-          <textarea id="f-note" name="note" rows="2" placeholder=" "></textarea>
-          <label for="f-note">Сколько гостей, площадка, пожелания</label>
-        </div>
-        <div class="form__foot">
-          <button class="btn btn--solid" type="submit" data-magnetic data-cursor="hover">
-            Отправить заявку <i class="btn__arrow"></i>
-          </button>
-          <p class="form__note">
-            Нажимая кнопку, вы соглашаетесь на обработку данных.
-            Заявка придёт Инне на почту, ответ — в течение дня.
-          </p>
-        </div>
-        <p class="form__status" id="form-status" role="status"></p>
-      </form>
+      <div class="form reach" data-reveal data-delay="2">
+        <p class="reach__title">Напишите, как вам удобнее</p>
+        <p class="form__note reach__note">Повод, дата, примерное число гостей и площадка, если уже выбрана. Отвечаю в течение дня.</p>
+        <a class="btn btn--solid btn--lg reach__btn" href="https://t.me/+79132673650" target="_blank" rel="noopener" data-magnetic data-cursor="hover">
+          Telegram <i class="btn__arrow"></i>
+        </a>
+        <a class="btn btn--lg reach__btn" href="https://wa.me/79132673650" target="_blank" rel="noopener" data-magnetic data-cursor="hover">
+          WhatsApp <i class="btn__arrow"></i>
+        </a>
+        <a class="btn btn--lg reach__btn" href="tel:+79132673650" data-magnetic data-cursor="hover">
+          Позвонить <i class="btn__arrow"></i>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -745,7 +758,7 @@
 
     <div class="footer__bottom">
       <span>© <span id="year">2026</span> Инна София</span>
-      <span class="ph">Реквизиты и политика конфиденциальности — добавить</span>
+      <span>Сайт не собирает персональные данные: без форм, cookie и счётчиков</span>
       <a href="#top" data-cursor="hover">Наверх</a>
     </div>
   </div>
@@ -758,7 +771,7 @@
   <a class="fab__call" href="tel:+79132673650" aria-label="Позвонить" data-cursor="hover">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
   </a>
-  <a class="fab__main" href="#contact" data-cursor="hover">Оставить заявку <i class="btn__arrow"></i></a>
+  <a class="fab__main" href="#contact" data-cursor="hover">Написать Инне <i class="btn__arrow"></i></a>
 </div>
 
 <button class="to-top" id="to-top" aria-label="Наверх"><i></i></button>

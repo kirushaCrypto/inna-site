@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------
    ui.js — поведение интерфейса: разбивка заголовков, появления,
    счётчики, курсор, магнитные кнопки, лента, карусели, аккордеон,
-   меню, форма и прелоадер.
+   меню и прелоадер.
 ------------------------------------------------------------------ */
 (function () {
   'use strict';
@@ -9,9 +9,6 @@
   const { Scroll, Observer, Pointer, Ticker, clamp, lerp, damp, reduceMotion, isTouch } = window.APP;
   const $ = (s, c) => (c || document).querySelector(s);
   const $$ = (s, c) => Array.from((c || document).querySelectorAll(s));
-
-  // Куда приходят заявки с формы (сервис FormSubmit, без своего сервера).
-  const LEAD_EMAIL = 'isib78@mail.ru';
 
   /* --------------------- Разбивка на слова ------------------------ */
   function wrapWords(node, out) {
@@ -353,72 +350,6 @@
     });
   }
 
-  /* ----------------------------- Форма ---------------------------- */
-  function initForm() {
-    $$('.field input, .field textarea').forEach(input => {
-      const sync = () => input.parentElement.classList.toggle('is-filled', !!input.value);
-      input.addEventListener('input', sync);
-      input.addEventListener('blur', sync);
-      sync();
-    });
-
-    const form = $('#lead-form');
-    const status = $('#form-status');
-    if (!form) return;
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const name = $('#f-name');
-      const phone = $('#f-phone');
-      if (!name.value.trim() || !phone.value.trim()) {
-        status.textContent = 'Заполните имя и контакт для связи.';
-        status.style.color = '#ff8181';
-        status.classList.add('is-on');
-        (!name.value.trim() ? name : phone).focus();
-        return;
-      }
-      if (form._honey && form._honey.value) return;
-
-      const btn = form.querySelector('button[type="submit"]');
-      const data = {
-        'Имя': name.value.trim(),
-        'Контакт': phone.value.trim(),
-        'Повод': $('#f-type').value,
-        'Дата события': $('#f-date').value || 'не указана',
-        'Детали': $('#f-note').value.trim() || '—',
-        _subject: 'Заявка с сайта: ' + $('#f-type').value + ', ' + name.value.trim(),
-        _template: 'table',
-        _captcha: 'false'
-      };
-      const show = (text, color) => {
-        status.style.color = color || '';
-        status.textContent = text;
-        status.classList.add('is-on');
-      };
-
-      btn.disabled = true;
-      show('Отправляю…');
-      fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(data)
-      })
-        .then(r => r.json().then(j => ({ ok: r.ok, j })))
-        .then(({ ok, j }) => {
-          if (!ok || String(j.success) !== 'true') throw new Error(j.message || 'send failed');
-          form.reset();
-          $$('.field', form).forEach(f => f.classList.remove('is-filled'));
-          show('Спасибо! Заявка у Инны — она свяжется с вами в течение дня.');
-        })
-        .catch(() => {
-          // Запасной путь: открываем почтовую программу с готовым письмом.
-          const body = Object.keys(data).filter(k => k[0] !== '_').map(k => k + ': ' + data[k]).join('\n');
-          show('Не получилось отправить. Позвоните: +7 913 267-36-50 или напишите на ' + LEAD_EMAIL + '.', '#ff8181');
-          window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + encodeURIComponent(data._subject) + '&body=' + encodeURIComponent(body);
-        })
-        .finally(() => { btn.disabled = false; });
-    });
-  }
-
   /* ---------------------------- Отзывы ---------------------------- */
   function initReviews() {
     const track = $('#reviews-track');
@@ -546,7 +477,6 @@
       initParallax();
       initFaq();
       initNav();
-      initForm();
       initReviews();
       initFab();
       initFooterMark();

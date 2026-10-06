@@ -1364,6 +1364,7 @@ html.gl-on .reel__fallback { display: none; }
   right: 6%; top: 50%;
   transform: translateY(-50%);
   width: min(40vw, 430px);
+  height: auto;
   opacity: 0.3;
   filter: grayscale(1) contrast(1.25) brightness(0.8);
   -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 38%, transparent 74%);
@@ -1442,6 +1443,11 @@ html.gl-on .dust__fallback { display: none; }
   margin-top: 6px;
 }
 .form__note { font-size: 0.72rem; color: var(--muted); max-width: 34ch; line-height: 1.5; }
+/* Блок «напишите сами» вместо формы: сайт не принимает данные, человек пишет Инне напрямую */
+.reach { align-content: start; align-self: start; }
+.reach__title { margin: 0; font-family: var(--font-display); font-size: clamp(1.1rem, 1.6vw, 1.4rem); line-height: 1.25; }
+.reach__note { max-width: none; font-size: 0.85rem; color: var(--ink-dim); margin: -6px 0 6px; }
+.reach__btn { justify-content: space-between; width: 100%; }
 .form__note .ph-note { margin-top: 8px; }
 .form__status {
   font-size: 0.82rem;
@@ -1677,3 +1683,6 @@ html.gl-on .dust__fallback { display: none; }
   font-weight: 700;
 }
 .skip-link:focus { left: 12px; top: 12px; }
+
+/* H1 живёт в плашке над лозунгом: ключевая фраза для поиска, вид — как у соседних плашек */
+.hero__h1 { font: inherit; font-size: clamp(0.58rem, 2.6vw, 0.68rem); font-weight: 400; margin: 0; }
