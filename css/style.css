@@ -10,7 +10,7 @@
   --bg-3: #131317;
   --ink: #f2f1ec;
   --ink-dim: #a5a5ac;
-  --muted: #74747c;
+  --muted: #7e7e86;
   --acid: #c9db4a;
   --acid-deep: #9aab2c;
   --line: rgba(242, 241, 236, 0.11);
@@ -1167,6 +1167,9 @@ html.gl-on .reel__fallback { display: none; }
 }
 .review__more:hover { border-bottom-color: var(--acid); }
 .review__more[hidden] { display: none; }
+/* зона касания больше, чем подпись */
+.review__more { position: relative; }
+.review__more::after { content: ''; position: absolute; inset: -12px -10px; }
 
 /* Последняя карточка — ссылка на все отзывы */
 .review--all {
@@ -1477,7 +1480,8 @@ html.gl-on .dust__fallback { display: none; }
 .footer {
   border-top: 1px solid var(--line);
   padding-top: clamp(40px, 5vw, 70px);
-  padding-bottom: 34px;
+  /* запас под плавающую кнопку, иначе она закрывает нижнюю строку */
+  padding-bottom: 104px;
   position: relative;
   z-index: 2;
   background: rgba(8, 8, 10, 0.6);
@@ -1510,9 +1514,10 @@ html.gl-on .dust__fallback { display: none; }
   font-weight: 600;
   margin-bottom: 16px;
 }
-.footer__col li + li { margin-top: 9px; }
-.footer__col a { color: var(--ink-dim); transition: color 0.3s; }
+.footer__col li + li { margin-top: 0; }
+.footer__col a { display: inline-block; padding: 5px 0; color: var(--ink-dim); transition: color 0.3s; }
 .footer__col a:hover { color: var(--acid); }
+.footer__bottom a { display: inline-block; padding: 10px 0; margin: -10px 0; }
 .footer__bottom {
   margin-top: clamp(30px, 4vw, 50px);
   padding-top: 22px;

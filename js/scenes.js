@@ -30,7 +30,8 @@
     const s = new GL.Sketch(canvas, {
       frag: SHADERS.BG,
       alwaysRender: true,
-      dprCap: 1.1,
+      // Дымка гладкая, на телефоне её не отличить от полного разрешения, а работы в 4–5 раз меньше.
+      dprCap: window.matchMedia('(pointer: coarse)').matches ? 0.5 : 1.1,
       onFrame(sk) {
         sk.uniforms.u_scroll = Scroll.state.progress;
         sk.uniforms.u_velocity = vel;
@@ -49,7 +50,7 @@
 
     const s = new GL.Sketch(canvas, {
       frag: SHADERS.PORTRAIT,
-      textures: { u_tex0: A['inna-03'] || 'img/inna-03.jpg' },
+      textures: { u_tex0: A['inna-03'] || 'img/inna-03.webp' },
       dprCap: 1.5,
       uniforms: { u_reveal: 0 },
       onFrame(sk, t, dt) {
@@ -77,7 +78,7 @@
     if (!canvas || !section) return;
 
     const keys = ['inna-02', 'inna-04', 'inna-01', 'inna-03'];
-    const srcs = keys.map((k, i) => A[k] || `img/inna-0${[2, 4, 1, 3][i]}.jpg`);
+    const srcs = keys.map((k, i) => A[k] || `img/inna-0${[2, 4, 1, 3][i]}.webp`);
     const titles = document.querySelectorAll('#reel-title span');
     const dots = document.querySelectorAll('#reel-dots .reel__dot i');
 
@@ -165,7 +166,7 @@
     let progress = 0;
 
     const p = new GL.ParticlePortrait(canvas, {
-      image: A['inna-04'] || 'img/inna-04.jpg',
+      image: A['inna-04'] || 'img/inna-04.webp',
       density: window.innerWidth < 760 ? 110 : 165,
       scale: 1.02,
       size: 1.35,

@@ -436,8 +436,15 @@
     let value = 0;
     let done = false;
     let loaded = false;
+    // Ждём только первый экран: шрифты и портрет. Остальная страница догрузится под заставкой.
+    const hero = document.querySelector('.hero__portrait img');
+    const heroReady = !hero || hero.complete ? null : new Promise(r => {
+      hero.addEventListener('load', r, { once: true });
+      hero.addEventListener('error', r, { once: true });
+    });
+    Promise.all([document.fonts && document.fonts.ready, heroReady]).then(() => (loaded = true));
     window.addEventListener('load', () => (loaded = true));
-    setTimeout(() => (loaded = true), 4000);
+    setTimeout(() => (loaded = true), 3000);
 
     const start = performance.now();
     const step = now => {
