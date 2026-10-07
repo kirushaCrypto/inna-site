@@ -2,6 +2,7 @@
 
     python tools/build.py innasofia.ru beget      -> dist/ для Beget (+ .htaccess)
     python tools/build.py inna-sofia.netlify.app netlify
+    python tools/build.py innasofia.ru redirect   -> dist/ только с _redirects: старый адрес на Netlify шлёт 301 на домен
 
 Что делает: копирует нужные файлы в dist/, ставит домен вместо SITE_DOMAIN,
 дату выкладки в sitemap и собирает разметку FAQPage из видимых вопросов на странице,
@@ -55,10 +56,18 @@ def faq_jsonld(page: str) -> str:
 
 
 def main():
-    if len(sys.argv) != 3 or sys.argv[2] not in ("beget", "netlify"):
+    if len(sys.argv) != 3 or sys.argv[2] not in ("beget", "netlify", "redirect"):
         sys.exit(__doc__)
     domain, target = sys.argv[1], sys.argv[2]
     today = datetime.date.today().isoformat()
+
+    if target == "redirect":
+        DIST.mkdir(exist_ok=True)
+        for old in DIST.iterdir():
+            shutil.rmtree(old) if old.is_dir() else old.unlink()
+        (DIST / "_redirects").write_text(f"/*  https://{domain}/:splat  301!\n", encoding="utf-8", newline="\n")
+        print(f"dist/ готов: 301 на https://{domain}/")
+        return
 
     # Чистим содержимое, а не саму папку: на Windows её может держать локальный сервер.
     DIST.mkdir(exist_ok=True)
