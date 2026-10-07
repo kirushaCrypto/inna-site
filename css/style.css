@@ -1502,7 +1502,7 @@ html.gl-on .dust__fallback { display: none; }
   white-space: nowrap;
   overflow: hidden;
 }
-.footer__col h4 {
+.footer__col h3 {
   font-size: 0.7rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
