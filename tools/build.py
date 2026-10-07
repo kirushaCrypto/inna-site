@@ -1,5 +1,6 @@
 """Сборка сайта под конкретный адрес.
 
+    python tools/build.py innasofia.ru regru      -> dist/ для хостинга Рег.ру (+ .htaccess)
     python tools/build.py innasofia.ru beget      -> dist/ для Beget (+ .htaccess)
     python tools/build.py inna-sofia.netlify.app netlify
     python tools/build.py innasofia.ru redirect   -> dist/ только с _redirects: старый адрес на Netlify шлёт 301 на домен
@@ -21,8 +22,12 @@ DIST = ROOT / "dist"
 PARTS = ["index.html", "favicon.ico", "robots.txt", "sitemap.xml", "css", "fonts", "img", "js", "video"]
 
 HTACCESS = """# Один адрес сайта: https и без www (301, чтобы поисковики склеили зеркала)
+# За nginx Apache может не видеть https напрямую: «не https» — когда ни один признак не говорит https.
 RewriteEngine On
-RewriteCond %{{HTTPS}} off [OR]
+RewriteCond %{{HTTPS}} !=on
+RewriteCond %{{HTTP:X-Forwarded-Proto}} !=https
+RewriteCond %{{SERVER_PORT}} !=443
+RewriteRule ^(.*)$ https://{domain}/$1 [R=301,L]
 RewriteCond %{{HTTP_HOST}} ^www\\. [NC]
 RewriteRule ^(.*)$ https://{domain}/$1 [R=301,L]
 
@@ -32,6 +37,7 @@ RewriteRule ^(.*)$ https://{domain}/$1 [R=301,L]
   ExpiresByType text/css "access plus 7 days"
   ExpiresByType application/javascript "access plus 7 days"
   ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType video/mp4 "access plus 30 days"
 </IfModule>
@@ -56,7 +62,7 @@ def faq_jsonld(page: str) -> str:
 
 
 def main():
-    if len(sys.argv) != 3 or sys.argv[2] not in ("beget", "netlify", "redirect"):
+    if len(sys.argv) != 3 or sys.argv[2] not in ("regru", "beget", "netlify", "redirect"):
         sys.exit(__doc__)
     domain, target = sys.argv[1], sys.argv[2]
     today = datetime.date.today().isoformat()
@@ -86,7 +92,7 @@ def main():
             text = text.replace("</head>", faq_jsonld(text) + "</head>", 1)
         f.write_text(text, encoding="utf-8", newline="\n")
 
-    if target == "beget":
+    if target in ("regru", "beget"):
         (DIST / ".htaccess").write_text(HTACCESS.format(domain=domain), encoding="utf-8", newline="\n")
 
     left = [p for p in DIST.rglob("*") if p.is_file() and "SITE_DOMAIN" in p.read_text("utf-8", "ignore")]

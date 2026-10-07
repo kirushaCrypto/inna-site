@@ -19,22 +19,29 @@
 
 ## Выкладка
 
-Сейчас (с 07.10) сайт без формы живёт на https://inna-sofia.netlify.app (siteId 53f305f5-bf50-4e49-98b0-19a935b4d124).
-Сборка под адрес: `python tools/build.py <домен> beget|netlify|redirect` → папка `dist/`
-(домен вместо SITE_DOMAIN, lastmod, FAQPage из видимых вопросов, `.htaccess` для Beget).
+**Домен https://innasofia.ru** — куплен 07.10.2026 на Рег.ру (аккаунт Кирилла, до 2027-10-07) вместе с хостингом
+Рег.ру тариф Host-0, аккаунт u3675325: панель ISPmanager https://server1.hosting.reg.ru:1500/, сервер 31.31.198.114,
+NS ns1/ns2.hosting.reg.ru, папка сайта `~/www/innasofia.ru`. Пароли — в письме Рег.ру «Создан хостинг u3675325» (Gmail, 07.10);
+в SSH пускает пароль от панели (не от FTP), для выкладки поставлен ключ `~/.ssh/regru_innasofia` (хост `innasofia` в ~/.ssh/config).
+
+Выкладка одной командой: `bash tools/deploy-regru.sh` — соберёт под innasofia.ru, распакует рядом и подменит папку сайта
+целиком (старая версия → `~/_backup/`, хранятся 3 последних), потом проверит https/http/www/видео
+(пока у домена нет DNS — проверяет прямо по IP). `.htaccess` шлёт http→https и www→без www (301).
+SSL — бесплатный Let's Encrypt из ISPmanager («SSL-сертификаты» → Let's Encrypt), продлевается панелью сама.
+
+Сборка под адрес: `python tools/build.py <домен> regru|beget|netlify|redirect` → папка `dist/`
+(домен вместо SITE_DOMAIN, lastmod, FAQPage из видимых вопросов, `.htaccess` для Рег.ру/Beget).
 Локально смотреть через сервер (`cd dist && python -m http.server`), не через file://.
+`tools/deploy-beget.sh` остался на случай переезда на Beget (аккаунт kiril76s).
 
 Переезд на свой домен:
-1. Зарегистрировать домен (свободны на 07.10: innasofia.ru, inna-sofia.ru, innasofiya.ru, innasofia.com).
-2. Панель Beget (аккаунт kiril76s) → «Сайты» → добавить сайт и привязать домен. Если домен куплен
-   не в Beget — у регистратора прописать NS: ns1.beget.com, ns2.beget.com, ns1.beget.pro, ns2.beget.pro.
-3. Панель Beget → SSL → бесплатный Let's Encrypt на домен (и www).
-4. `bash tools/deploy-beget.sh <домен>` — соберёт, сделает бэкап старого public_html и зальёт по ssh.
-   `.htaccess` сам шлёт http→https и www→без www (301).
-5. Старый адрес на Netlify → 301 на домен:
+1. ✅ 07.10 домен innasofia.ru + хостинг Рег.ру; сайт залит (`deploy-regru.sh`), по IP отдаётся, 301 работают.
+2. Дождаться DNS (зона .ru, потом кэш публичных DNS до часа) → Let's Encrypt в ISPmanager на innasofia.ru и www.
+3. Проверить https://innasofia.ru с телефона.
+4. Старый адрес на Netlify (https://inna-sofia.netlify.app, siteId 53f305f5-bf50-4e49-98b0-19a935b4d124) → 301 на домен:
    `python tools/build.py <домен> redirect && cd dist && npx netlify-cli deploy --prod --dir . --site 53f305f5-bf50-4e49-98b0-19a935b4d124`
-6. Яндекс.Вебмастер: добавить сайт, регион «Москва», отправить sitemap. Google Search Console — то же.
-7. Яндекс Бизнес: карточка «Ведущая мероприятий» без адреса, с зоной выезда (Москва и область), ссылка на сайт.
+5. Яндекс.Вебмастер: добавить сайт, регион «Москва», отправить sitemap. Google Search Console — то же.
+6. Яндекс Бизнес: карточка «Ведущая мероприятий» без адреса, с зоной выезда (Москва и область), ссылка на сайт.
 
 ## SEO/GEO, что уже сделано (06.10)
 
