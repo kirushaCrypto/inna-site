@@ -60,9 +60,10 @@ def main():
     domain, target = sys.argv[1], sys.argv[2]
     today = datetime.date.today().isoformat()
 
-    if DIST.exists():
-        shutil.rmtree(DIST)
-    DIST.mkdir()
+    # Чистим содержимое, а не саму папку: на Windows её может держать локальный сервер.
+    DIST.mkdir(exist_ok=True)
+    for old in DIST.iterdir():
+        shutil.rmtree(old) if old.is_dir() else old.unlink()
     for part in PARTS:
         src = ROOT / part
         (shutil.copytree if src.is_dir() else shutil.copy2)(src, DIST / part)

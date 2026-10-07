@@ -201,14 +201,27 @@
     return p.ok;
   }
 
+  // Сцены ниже первого экрана поднимаем, когда до секции остаётся экран:
+  // на телефоне компиляция шейдеров и сборка точек при загрузке стоят секунды.
+  function whenNear(id, fn) {
+    const el = document.getElementById(id);
+    if (!el || !('IntersectionObserver' in window)) return fn();
+    const io = new IntersectionObserver(es => {
+      if (!es.some(e => e.isIntersecting)) return;
+      io.disconnect();
+      fn();
+    }, { rootMargin: '100% 0px' });
+    io.observe(el);
+  }
+
   function init() {
     if (!GL.supported() || reduceMotion) return false;
     const ok = initBackground();
     if (!ok) return false;
     document.documentElement.classList.add('gl-on');
     initPortrait();
-    initReel();
-    initParticles();
+    whenNear('reel', initReel);
+    whenNear('dust', initParticles);
     return true;
   }
 
